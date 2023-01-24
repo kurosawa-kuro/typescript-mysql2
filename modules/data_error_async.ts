@@ -6,12 +6,12 @@ import { createPool, Pool } from 'mysql2/promise'
 export async function data_error_async(conn: Pool): Promise<{ data: infomation[], error: any }> {
     console.log("data_error_async invoked")
     try {
-        const newPost: infomation = { content: "abx" }
+        const input: infomation = { content: 'abc' }
 
-        await conn.query('INSERT INTO infomation SET ?', [newPost]);
+        await conn.query('INSERT INTO infomation SET ?', [input]);
 
-        const res = await conn.query('SELECT * FROM infomation');
-        const data = res[0] as infomation[];
+        const [res] = await conn.query('SELECT * FROM infomation');
+        const data = res as infomation[];
 
         return { data, error: null }
     } catch (error) {
