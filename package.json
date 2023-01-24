@@ -1,0 +1,32 @@
+{
+  "name": "notice",
+  "version": "1.0.0",
+  "description": "# 通知君",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kurosawa-kuro/notice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kurosawa-kuro/notice/issues"
+  },
+  "homepage": "https://github.com/kurosawa-kuro/notice#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/mysql": "^2.15.21",
+    "axios": "^1.2.2",
+    "dotenv": "^16.0.3",
+    "mysql": "^2.18.1",
+    "twitter-api-sdk": "^1.2.1"
+  }
+}
