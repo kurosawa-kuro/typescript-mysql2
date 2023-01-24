@@ -3,7 +3,7 @@ require('dotenv').config();
 import { Pool } from 'mysql2/promise'
 import { infomation } from '../types/information';
 
-export async function create_infomation_async(conn: Pool, input: infomation): Promise<{ data: number | null, error: any }> {
+export async function createInfomation(conn: Pool, input: infomation): Promise<{ data: number | null, error: any }> {
     try {
         const [res]: any = await conn.query('INSERT INTO infomation SET ?', [input]);
         const data: number = res.insertId
@@ -15,7 +15,7 @@ export async function create_infomation_async(conn: Pool, input: infomation): Pr
     }
 }
 
-export async function read_infomations_async(conn: Pool): Promise<{ data: infomation[] | null, error: any }> {
+export async function readInfomations(conn: Pool): Promise<{ data: infomation[] | null, error: any }> {
     try {
         const [res] = await conn.query('SELECT * FROM infomation');
         const data = res as infomation[];
@@ -27,7 +27,7 @@ export async function read_infomations_async(conn: Pool): Promise<{ data: infoma
     }
 }
 
-export async function read_infomation_async(conn: Pool, id: number): Promise<{ data: infomation | null, error: any }> {
+export async function readInfomation(conn: Pool, id: number): Promise<{ data: infomation | null, error: any }> {
     try {
         const [res]: any = await conn.query('SELECT * FROM infomation WHERE id = ?', [id]);
         const data: infomation = res[0];
@@ -39,7 +39,7 @@ export async function read_infomation_async(conn: Pool, id: number): Promise<{ d
     }
 }
 
-export async function update_infomation_async(conn: Pool, id: number, input: infomation): Promise<{ data: { changedRows: boolean } | null, error: any }> {
+export async function updateInfomation(conn: Pool, id: number, input: infomation): Promise<{ data: { changedRows: boolean } | null, error: any }> {
     try {
         const [res]: any = await conn.query('UPDATE infomation set ? WHERE id = ?', [input, id]);
         const data: { changedRows: boolean } = { changedRows: res.changedRows }
@@ -51,7 +51,7 @@ export async function update_infomation_async(conn: Pool, id: number, input: inf
     }
 }
 
-export async function delete_infomation_async(conn: Pool, id: number): Promise<{ data: { affectedRows: boolean } | null, error: any }> {
+export async function deleteInfomation(conn: Pool, id: number): Promise<{ data: { affectedRows: boolean } | null, error: any }> {
     try {
         const [res]: any = await conn.query('DELETE FROM infomation WHERE id = ?', [id]);
         const data: { affectedRows: boolean } = { affectedRows: res.affectedRows }

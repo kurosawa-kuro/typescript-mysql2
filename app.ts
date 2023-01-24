@@ -2,14 +2,14 @@ require('dotenv').config();
 
 import { Pool } from 'mysql2/promise'
 import { connect } from './utils/connection';
-import {
-    create_infomation_async,
-    read_infomations_async,
-    read_infomation_async,
-    update_infomation_async,
-    delete_infomation_async
-} from "./services/infomation_service";
 import { infomation } from './types/information';
+import {
+    createInfomation,
+    readInfomations,
+    readInfomation,
+    updateInfomation,
+    deleteInfomation
+} from "./services/infomation_service";
 
 let conn: Pool | null = null;
 
@@ -20,23 +20,23 @@ async function app() {
 
     // Create
     const input: infomation = { content: 'efg' }
-    const { data: createInfomationData, error: createInfomationError } = await create_infomation_async(conn, input)
+    const { data: createInfomationData, error: createInfomationError } = await createInfomation(conn, input)
 
     // Read
-    const { data: readInfomationsData, error: readInfomationsError } = await read_infomations_async(conn)
+    const { data: readInfomationsData, error: readInfomationsError } = await readInfomations(conn)
 
     // Read
     const id: number = 4
-    const { data: readInfomationData, error: readInfomationError } = await read_infomation_async(conn, id)
+    const { data: readInfomationData, error: readInfomationError } = await readInfomation(conn, id)
 
     // Update
     const updateId: number = 5
     const updateInput: infomation = { content: 'efgg' }
-    const { data: updateInfomationData, error: updateInfomationError } = await update_infomation_async(conn, updateId, updateInput)
+    const { data: updateInfomationData, error: updateInfomationError } = await updateInfomation(conn, updateId, updateInput)
 
     // Delete
     const deleteId: number = 6
-    const { data: deleteInfomationData, error: deleteInfomationError } = await delete_infomation_async(conn, deleteId)
+    const { data: deleteInfomationData, error: deleteInfomationError } = await deleteInfomation(conn, deleteId)
 
     if (createInfomationError) {
         throw new Error(createInfomationError);
