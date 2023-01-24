@@ -14,8 +14,6 @@ async function app() {
 
     conn = await connect();
 
-    // Create
-    // const input: infomation = { content: 'efg' }
     const { data: seedInfomationsData, error: createInfomationError } = await seedInfomations(conn)
     console.log({ seedInfomationsData })
 

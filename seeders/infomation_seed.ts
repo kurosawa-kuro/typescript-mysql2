@@ -8,11 +8,18 @@ export async function seedInfomations(conn: Pool): Promise<{ data: string | null
     try {
         const inputData: infomation[] = infomationData
 
+        let data: string | null = null;
+
         await Promise.all(inputData.map(async (infomation: infomation) => {
             await conn.query('INSERT INTO infomation SET ?', [infomation]);
-        }));
+        })).then(() => {
+            data = "success seed infomations"
 
-        return { data: "success seed infomations", error: null }
+            return { data, error: null }
+        });
+
+        return { data, error: null }
+
     } catch (error) {
 
         return { data: null, error }
